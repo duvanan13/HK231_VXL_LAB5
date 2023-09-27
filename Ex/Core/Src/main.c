@@ -208,8 +208,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	setTimer1(1000);
+	setTimer2(1000);
   while (1)
   {
+      if(counter2_flag==1){
+	  setTimer2(1000);
+	  HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+      }
       if (buffer_flag == 1) {
           command_parser_fsm();
           buffer_flag = 0;
